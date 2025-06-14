@@ -1,0 +1,3 @@
+- try making the nonlinearity more intense: FNN or Gaussian Process (maybe show both)
+- test with real world data
+

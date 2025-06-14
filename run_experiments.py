@@ -18,9 +18,20 @@ from lingam_mmi import HSIC_LiNGAM_MMI
 from resit_mmi import HSIC_RESIT_MMI
 from bidirectional_mmi import BidirectionalMMI 
 from hsic_direct_lingam import HSICDirectLiNGAM 
+
+# Regressors for the models
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import StandardScaler
+
+# --- Import Metrics from user-provided file ---
+# This uses the cdt library's SID, which is the standard.
+# It requires 'pip install cdt' and a working R environment.
+try:
+    from cdt.metrics import SID
+except ImportError:
+    print("Warning: Could not import SID from 'metrics.py'. The 'cdt' library might be missing.")
+    print("Please run 'pip install cdt' and ensure you have a working R environment.")
+    SID = None
 
 
 def calculate_ordering_error(true_order: list, pred_order: list) -> float:
@@ -29,8 +40,7 @@ def calculate_ordering_error(true_order: list, pred_order: list) -> float:
         print(f"  ! Warning: Predicted order length ({len(pred_order)}) does not match true order length ({len(true_order)}). Assigning max error.")
         return 1.0
     n_nodes = len(true_order)
-    if n_nodes < 2:
-        return 0.0
+    if n_nodes < 2: return 0.0
     true_pos = {node: i for i, node in enumerate(true_order)}
     pred_pos = {node: i for i, node in enumerate(pred_order)}
     disagreements = 0
@@ -42,18 +52,29 @@ def calculate_ordering_error(true_order: list, pred_order: list) -> float:
             disagreements += 1
     return disagreements / len(node_pairs)
 
+def calculate_shd(true_adj: np.ndarray, pred_adj: np.ndarray) -> int:
+    """Calculates the Structural Hamming Distance (SHD)."""
+    diff = np.abs(true_adj - pred_adj)
+    # The SHD for DAGs is the number of edge additions, deletions, or reversals.
+    # A reversal is double-counted by a simple diff (one addition, one deletion).
+    reversals = np.sum((true_adj.T == 1) & (diff == 1)) / 2
+    return int(np.sum(diff) - reversals)
+
 def run_single_trial(trial_path: str, models: dict, use_linear_resit: bool = False) -> dict:
     """Runs all specified models on a single trial's data and returns the results."""
     print(f"Processing {os.path.basename(trial_path)}...")
     data_path = os.path.join(trial_path, 'data.csv')
-    ground_truth_path = os.path.join(trial_path, 'causal_order.npy')
+    order_truth_path = os.path.join(trial_path, 'causal_order.npy')
+    adj_truth_path = os.path.join(trial_path, 'adj_matrix.npy')
 
-    if not os.path.exists(data_path) or not os.path.exists(ground_truth_path):
+    if not all(os.path.exists(p) for p in [data_path, order_truth_path, adj_truth_path]):
         print(f"  - Skipping trial, missing files in {trial_path}")
         return None
 
     data = pd.read_csv(data_path)
-    true_order = np.load(ground_truth_path).tolist()
+    true_order = np.load(order_truth_path).tolist()
+    true_adj = (np.load(adj_truth_path) != 0).astype(int)
+    
     trial_results = {'trial': os.path.basename(trial_path)}
     resit_regressor = LinearRegression() if use_linear_resit else GradientBoostingRegressor()
 
@@ -70,23 +91,30 @@ def run_single_trial(trial_path: str, models: dict, use_linear_resit: bool = Fal
             
             current_model.fit(data)
             pred_order = current_model.causal_order_
+            pred_adj = (current_model.adjacency_matrix_ != 0).astype(int)
+            
             error = calculate_ordering_error(true_order, pred_order)
+            shd = calculate_shd(true_adj, pred_adj)
+            sid = SID(true_adj, pred_adj) if SID is not None else -1.0 # Use -1 to indicate unavailable
+
         except Exception as e:
             print(f"    ! Error running {name} on {os.path.basename(trial_path)}: {e}")
-            pred_order = []
-            error = 1.0 # Max error if model fails
+            error, shd, sid = 1.0, np.sum(true_adj), -1.0
+
         end_time = time.time()
         
         trial_results[f'{name}_error'] = error
+        trial_results[f'{name}_shd'] = shd
+        trial_results[f'{name}_sid'] = sid
         trial_results[f'{name}_time_s'] = end_time - start_time
-        trial_results[f'{name}_order'] = pred_order
+
     return trial_results
 
 def main():
     parser = argparse.ArgumentParser(description="Run causal discovery experiments on synthetic datasets.")
-    parser.add_argument('--exp_dir', type=str, required=True, help='The base directory of the experiment, containing trial subdirectories.')
-    parser.add_argument('--workers', type=int, default=max(1, cpu_count() - 1), help='Number of worker processes to use for parallel execution.')
-    parser.add_argument('--resit_linear', action='store_true', help='Use Linear Regression for all RESIT-based models.')
+    parser.add_argument('--exp_dir', type=str, required=True, help='The base directory of the experiment.')
+    parser.add_argument('--workers', type=int, default=max(1, cpu_count() - 1), help='Number of worker processes.')
+    parser.add_argument('--resit_linear', action='store_true', help='Use Linear Regression for RESIT models.')
     args = parser.parse_args()
 
     if not os.path.isdir(args.exp_dir):
@@ -121,39 +149,24 @@ def main():
     results_df.to_csv(output_path, index=False)
     print(f"\nDetailed results saved to: {output_path}")
 
-    # --- NEW: Create a clean, formatted summary table ---
     summary_data = []
     for model_name in models_to_run.keys():
-        error_col = f'{model_name}_error'
-        time_col = f'{model_name}_time_s'
-        
-        mean_error = results_df[error_col].mean()
-        std_error = results_df[error_col].std()
-        mean_time = results_df[time_col].mean()
-        std_time = results_df[time_col].std()
-        
         summary_data.append({
             'Algorithm': model_name,
-            'Mean Error': mean_error,
-            'Std Error': std_error,
-            'Mean Time (s)': mean_time,
-            'Std Time (s)': std_time
+            'Ordering Error': f"{results_df[f'{model_name}_error'].mean():.2f} ± {results_df[f'{model_name}_error'].std():.2f}",
+            'SHD': f"{results_df[f'{model_name}_shd'].mean():.2f} ± {results_df[f'{model_name}_shd'].std():.2f}",
+            'SID': f"{results_df[f'{model_name}_sid'].mean():.2f} ± {results_df[f'{model_name}_sid'].std():.2f}" if SID is not None else "N/A",
+            'Time (s)': f"{results_df[f'{model_name}_time_s'].mean():.2f} ± {results_df[f'{model_name}_time_s'].std():.2f}",
         })
         
     summary_df = pd.DataFrame(summary_data).set_index('Algorithm')
     
-    # Set display options for cleaner printing
-    pd.set_option('display.float_format', '{:.4f}'.format)
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.width', 1000)
-
     print("\n--- Experiment Summary ---")
     print(f"Directory: {args.exp_dir}")
     print(f"Total Trials Processed: {len(results_df)}")
-    print("\nAlgorithm Performance:")
-    print(summary_df)
-    print("\nNote: Ordering error is the fraction of incorrect pairwise relations (lower is better).")
-
+    print("\nAlgorithm Performance (Mean ± Std):")
+    print(summary_df.to_string())
+    print("\nNote: Lower is better for all metrics (Ordering Error, SHD, SID).")
 
 if __name__ == '__main__':
     main()
