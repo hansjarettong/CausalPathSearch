@@ -1,0 +1,44 @@
+# Conda environment configuration for the LiNGAM-SPP project.
+#
+# To create the environment, navigate to your project directory in the terminal
+# and run the following command:
+#
+#   conda env create -f environment.yml
+#
+# After creation, activate the environment with:
+#
+#   conda activate lingam-spp
+#
+
+name: causal-path-search
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # --- Core Python ---
+  - python=3.9
+
+  # --- Scientific Computing & Data Handling ---
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - statsmodels
+
+  # --- Visualization & Utilities ---
+  - matplotlib
+  - seaborn
+  - tqdm # For progress bars
+
+  # --- Testing ---
+  - pytest
+
+  # --- Pip for packages not on main conda channels ---
+  - pip
+  - pip:
+      # The official LiNGAM package
+      - lingam
+      # For Copula Entropy mutual information estimation
+      - copent
+      # A useful library for causal discovery baselines
+      - gcastle
