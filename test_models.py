@@ -24,8 +24,8 @@ class HSICDirectLiNGAM(BaselineDirectLiNGAM):
         super().__init__(measure='hsic', random_state=random_state)
     
     def _get_measure_score(self, u, v_residuals):
-        _, p_val = hsic_test_gamma(u, v_residuals)
-        return -p_val
+        hsic_stat, p_val = hsic_test_gamma(u, v_residuals)
+        return hsic_stat
 
 class TestModelEquivalence(unittest.TestCase):
     @classmethod
