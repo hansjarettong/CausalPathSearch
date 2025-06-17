@@ -5,13 +5,13 @@ import os
 import networkx as nx
 from castle.datasets import DAG
 from scipy.stats import t, laplace, uniform, expon, norm
-from sklearn.preprocessing import StandardScaler
-
+# --- CHANGE: Import GaussianProcessRegressor and its kernel ---
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 
 class NonGaussianDistributions:
     """
     Class to generate a variety of non-Gaussian noise types.
-    Adapted from the user-provided data_generating_process.py script.
     """
     def __init__(self):
         self.distributions = [
@@ -36,11 +36,9 @@ class NonGaussianDistributions:
         if var is None:
             var = np.random.uniform(1, 3) # Random variance between 1 and 3
 
-        # Choose a random distribution from the list
         dist_func = np.random.choice(self.distributions)
         noise = dist_func(n_samples)
         
-        # Scale the noise to have the desired variance
         return (noise / np.std(noise)) * np.sqrt(var)
 
     def student_3_dof(self, n): return t(3).rvs(n)
@@ -101,22 +99,36 @@ class NonGaussianDistributions:
         mask = np.eye(4)[np.random.choice(4, n, p=[0.15, 0.15, 0.35, 0.35])]
         return (norms.T * mask).sum(axis=1)
 
-def _nonlinear_transformations(x, function_type=None):
-    if function_type is None:
-        function_type = np.random.choice(['tanh', 'cos', 'square', 'cube'])
-    if function_type == 'tanh': return np.tanh(x)
-    if function_type == 'cos': return np.cos(x)
-    if function_type == 'square': return x ** 2
-    if function_type == 'cube': return x ** 3
-    return x
+# --- CHANGE: Updated function signature to accept noise_type ---
+def generate_synthetic_dataset(n_nodes, n_samples, graph_density, n_confounders, confounder_strength=1.0, is_linear=False, noise_type='nongaussian'):
+    """
+    Generates synthetic data for causal discovery.
 
-def generate_synthetic_dataset(n_nodes, n_samples, graph_density, n_confounders, confounder_strength=1.0, is_linear=False):
+    Args:
+        n_nodes (int): Number of variables.
+        n_samples (int): Number of data points.
+        graph_density (float): Expected number of parents per node.
+        n_confounders (int): Number of latent confounders.
+        confounder_strength (float): Multiplier for the confounding effect.
+        is_linear (bool): If True, generates linear data. If False, generates nonlinear data.
+        noise_type (str): Type of noise to generate. Either 'nongaussian' or 'gaussian'.
+    """
     n_edges = int(graph_density * n_nodes)
     B = DAG.erdos_renyi(n_nodes=n_nodes, n_edges=n_edges, weight_range=(0.5, 1.5))
     G = nx.DiGraph(B)
     causal_order = list(nx.topological_sort(G))
     
-    noise_generator = NonGaussianDistributions()
+    # --- CHANGE: Logic to handle different noise types ---
+    if noise_type == 'nongaussian':
+        noise_generator = NonGaussianDistributions()
+        e = np.array([noise_generator.generate_noise(n_samples) for _ in range(n_nodes)]).T
+        f = np.array([noise_generator.generate_noise(n_samples) for _ in range(n_confounders)]).T
+    elif noise_type == 'gaussian':
+        e = np.array([norm(loc=0, scale=np.random.uniform(1, 3)).rvs(n_samples) for _ in range(n_nodes)]).T
+        f = np.array([norm(loc=0, scale=np.random.uniform(1, 3)).rvs(n_samples) for _ in range(n_confounders)]).T
+    else:
+        raise ValueError(f"Unknown noise_type: {noise_type}. Must be 'nongaussian' or 'gaussian'.")
+
     confounding_matrix = np.zeros((n_nodes, n_confounders))
     confounded_variables = {}
     
@@ -129,26 +141,37 @@ def generate_synthetic_dataset(n_nodes, n_samples, graph_density, n_confounders,
             strengths = np.random.uniform(0.5, 1.5, size=num_affected) * np.random.choice([-1, 1], size=num_affected)
             confounding_matrix[affected_nodes, i] = strengths
 
-    e = np.array([noise_generator.generate_noise(n_samples) for _ in range(n_nodes)]).T
-    f = np.array([noise_generator.generate_noise(n_samples) for _ in range(n_confounders)]).T
-    
     total_confounding_effect = (f @ confounding_matrix.T) * confounder_strength
     X = np.zeros((n_samples, n_nodes))
     
+    # --- CHANGE: Define a Gaussian Process for nonlinear data generation ---
+    if not is_linear:
+        # A standard RBF kernel for smooth, complex functions
+        kernel = C(1.0, (1e-3, 1e3)) * RBF(length_scale=1.0, length_scale_bounds=(1e-2, 1e2))
+        gp = GaussianProcessRegressor(kernel=kernel)
+
     for i in causal_order:
         parents = np.where(B[:, i] != 0)[0]
         parent_effect = 0
         if len(parents) > 0:
-            linear_parent_effect = X[:, parents] @ B[parents, i]
-            parent_effect = linear_parent_effect if is_linear else _nonlinear_transformations(linear_parent_effect)
+            if is_linear:
+                parent_effect = X[:, parents] @ B[parents, i]
+            else:
+                # --- CHANGE: Use Gaussian Process to generate parent effect ---
+                # We use the GP to sample a random nonlinear function of the parents.
+                # The shape of parent data for the GP needs to be (n_samples, n_parents)
+                parent_data = X[:, parents]
+                if parent_data.ndim == 1:
+                    parent_data = parent_data.reshape(-1, 1)
+                
+                # We add a small amount of noise to the GP to ensure stability
+                parent_effect = gp.sample_y(parent_data, 1, random_state=None).flatten()
+
         X[:, i] = parent_effect + total_confounding_effect[:, i] + e[:, i]
 
-    # --- FIX: Scale the final data to prevent overflow issues ---
-    # This ensures the data saved to CSV is well-behaved.
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
-
-    X_df = pd.DataFrame(X_scaled, columns=[f'x{i}' for i in range(n_nodes)])
+    # --- CHANGE: StandardScaler has been removed ---
+    # The function now returns the raw generated data.
+    X_df = pd.DataFrame(X, columns=[f'x{i}' for i in range(n_nodes)])
 
     return {'X': X_df, 'B': B, 'causal_order': causal_order, 'confounding_matrix': confounding_matrix, 'confounded_variables': confounded_variables}
 
@@ -175,20 +198,31 @@ def main():
     parser.add_argument('--confounder_strength', type=float, default=1.5, help='Multiplier for the confounding effect.')
     parser.add_argument('--trials', type=int, default=5, help='Number of trials to generate.')
     parser.add_argument('--out', type=str, default='experiments', help='Base output directory.')
-    parser.add_argument('--linear', action='store_true', help='Generate linear data instead of nonlinear.')
+    # --- CHANGE: Modified arguments to select simulation type ---
+    parser.add_argument('--scenario', type=str, default='linear-nongaussian', 
+                        choices=['linear-nongaussian', 'nonlinear-gaussian'],
+                        help='The simulation scenario to generate data for.')
     args = parser.parse_args()
 
-    model_type = 'linear' if args.linear else 'nonlinear'
-    exp_name = f"{model_type}_n{args.nodes}_s{args.samples}_d{args.density}_c{args.confounders}_cs{args.confounder_strength}_t{args.trials}"
+    # Determine settings from scenario
+    if args.scenario == 'linear-nongaussian':
+        is_linear = True
+        noise_type = 'nongaussian'
+    elif args.scenario == 'nonlinear-gaussian':
+        is_linear = False
+        noise_type = 'gaussian'
+
+    exp_name = f"{args.scenario}_n{args.nodes}_s{args.samples}_d{args.density}_c{args.confounders}_cs{args.confounder_strength}_t{args.trials}"
     base_path = os.path.join(args.out, exp_name)
     
-    print(f"Generating {args.trials} synthetic dataset trials in '{base_path}'...")
+    print(f"Generating {args.trials} synthetic dataset trials for scenario '{args.scenario}' in '{base_path}'...")
     
     for i in range(args.trials):
         print(f"- Generating trial {i+1}/{args.trials}...")
         trial_path = os.path.join(base_path, f"trial_{i:03d}")
         dataset = generate_synthetic_dataset(
-            args.nodes, args.samples, args.density, args.confounders, args.confounder_strength, is_linear=args.linear
+            args.nodes, args.samples, args.density, args.confounders, 
+            args.confounder_strength, is_linear=is_linear, noise_type=noise_type
         )
         save_dataset(dataset, trial_path)
         

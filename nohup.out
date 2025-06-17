@@ -1,0 +1,399 @@
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:89] - INFO: Master run directory: beam_comparison_experiments/run_20250615_095916
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:90] - INFO: Master summary file: beam_comparison_experiments/run_20250615_095916/master_summary.csv
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:183] - INFO: ############################################################
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:184] - INFO: ###   STARTING BEAM SEARCH VS BASELINES COMPARISON       ###
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:185] - INFO: ############################################################
+
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n5_s500_k5
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 5, 'n_samples': 500, 'beam_width': 5, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 09:59:16,478 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n5_s500_k5 ---
+2025-06-15 10:00:24,108 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 10:00:24,193 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n5_s500_k5 ---
+2025-06-15 10:01:21,796 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 10:01:21,889 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n5_s500_k5 ---
+2025-06-15 10:02:32,895 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 10:02:32,994 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n5_s500_k5 ---
+2025-06-15 10:03:37,432 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 10:03:37,500 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n5_s500_k5 ---
+2025-06-15 10:04:50,533 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 10:04:50,633 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n5_s500_k5 ---
+2025-06-15 10:06:06,983 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 10:06:07,071 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 10:06:07,071 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:06:07,071 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n5_s500_k5
+2025-06-15 10:06:07,071 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 10:06:07,072 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 10:06:07,072 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n5_s500_k10
+2025-06-15 10:06:07,072 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 5, 'n_samples': 500, 'beam_width': 10, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 10:06:07,072 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:06:07,072 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n5_s500_k10 ---
+2025-06-15 10:07:07,909 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 10:07:07,980 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n5_s500_k10 ---
+2025-06-15 10:08:08,543 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 10:08:08,632 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n5_s500_k10 ---
+2025-06-15 10:09:05,380 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 10:09:05,456 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n5_s500_k10 ---
+2025-06-15 10:10:00,263 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 10:10:00,333 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n5_s500_k10 ---
+2025-06-15 10:11:04,806 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 10:11:04,869 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n5_s500_k10 ---
+2025-06-15 10:12:09,329 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 10:12:09,410 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 10:12:09,411 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:12:09,411 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n5_s500_k10
+2025-06-15 10:12:09,411 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 10:12:09,411 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 10:12:09,412 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n10_s500_k5
+2025-06-15 10:12:09,412 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 10, 'n_samples': 500, 'beam_width': 5, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 10:12:09,412 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:12:09,412 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n10_s500_k5 ---
+2025-06-15 10:13:31,691 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 10:13:31,761 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n10_s500_k5 ---
+2025-06-15 10:15:01,537 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 10:15:01,609 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n10_s500_k5 ---
+2025-06-15 10:16:53,310 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 10:16:53,388 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n10_s500_k5 ---
+2025-06-15 10:18:31,911 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 10:18:31,981 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n10_s500_k5 ---
+2025-06-15 10:21:08,357 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 10:21:08,424 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n10_s500_k5 ---
+2025-06-15 10:23:41,056 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+--- Bidirectional beams met! ---
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 10:23:41,134 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 10:23:41,134 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:23:41,134 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n10_s500_k5
+2025-06-15 10:23:41,134 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 10:23:41,135 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 10:23:41,135 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n10_s500_k10
+2025-06-15 10:23:41,135 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 10, 'n_samples': 500, 'beam_width': 10, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 10:23:41,135 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:23:41,135 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n10_s500_k10 ---
+2025-06-15 10:25:11,512 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 10:25:11,586 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n10_s500_k10 ---
+2025-06-15 10:26:46,684 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 10:26:46,760 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n10_s500_k10 ---
+2025-06-15 10:28:36,997 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 10:28:37,076 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n10_s500_k10 ---
+2025-06-15 10:30:13,397 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 10:30:13,469 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n10_s500_k10 ---
+2025-06-15 10:32:24,399 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 10:32:24,468 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n10_s500_k10 ---
+2025-06-15 10:34:33,072 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+--- Bidirectional beams met! ---
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 10:34:33,154 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 10:34:33,154 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:34:33,154 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n10_s500_k10
+2025-06-15 10:34:33,154 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 10:34:33,155 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 10:34:33,155 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n15_s500_k5
+2025-06-15 10:34:33,155 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 15, 'n_samples': 500, 'beam_width': 5, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 10:34:33,155 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:34:33,155 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n15_s500_k5 ---
+2025-06-15 10:36:20,274 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 10:36:20,346 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n15_s500_k5 ---
+2025-06-15 10:38:02,434 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 10:38:02,515 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n15_s500_k5 ---
+2025-06-15 10:41:34,281 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 10:41:34,349 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n15_s500_k5 ---
+2025-06-15 10:44:08,174 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 10:44:08,246 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n15_s500_k5 ---
+2025-06-15 10:47:34,580 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 10:47:34,675 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n15_s500_k5 ---
+2025-06-15 10:50:36,520 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 10:50:36,592 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n15_s500_k5
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n15_s500_k10
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 15, 'n_samples': 500, 'beam_width': 10, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 10:50:36,593 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n15_s500_k10 ---
+2025-06-15 10:52:13,608 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 10:52:13,677 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n15_s500_k10 ---
+2025-06-15 10:53:46,897 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 10:53:46,959 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n15_s500_k10 ---
+2025-06-15 10:56:20,729 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 10:56:20,787 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n15_s500_k10 ---
+2025-06-15 10:58:09,966 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 10:58:10,023 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n15_s500_k10 ---
+2025-06-15 11:00:55,780 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 11:00:55,834 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n15_s500_k10 ---
+2025-06-15 11:03:14,258 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n15_s500_k10
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n30_s500_k5
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 30, 'n_samples': 500, 'beam_width': 5, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 11:03:14,305 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n30_s500_k5 ---
+2025-06-15 11:05:00,636 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 11:05:00,678 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n30_s500_k5 ---
+2025-06-15 11:06:44,247 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 11:06:44,283 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n30_s500_k5 ---
+2025-06-15 11:10:08,242 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 11:10:08,287 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n30_s500_k5 ---
+2025-06-15 11:11:59,840 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 11:11:59,885 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n30_s500_k5 ---
+2025-06-15 11:17:36,384 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 11:17:36,424 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n30_s500_k5 ---
+2025-06-15 11:23:55,335 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 11:23:55,459 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 11:23:55,459 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 11:23:55,460 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n30_s500_k5
+2025-06-15 11:23:55,460 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 11:23:55,462 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:147] - INFO: ======================================================================
+2025-06-15 11:23:55,462 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:148] - INFO: STARTING CONFIGURATION: n30_s500_k10
+2025-06-15 11:23:55,462 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:149] - INFO: Parameters: {'n_nodes': 30, 'n_samples': 500, 'beam_width': 10, 'scenario': 'nonlinear-gaussian', 'density': 2.0, 'n_confounders': 2, 'conf_strength': 1.5}
+2025-06-15 11:23:55,462 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:150] - INFO: ----------------------------------------------------------------------
+2025-06-15 11:23:55,462 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: DirectLiNGAM for config: n30_s500_k10 ---
+2025-06-15 11:27:13,548 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for DirectLiNGAM.
+2025-06-15 11:27:13,614 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSICDirectLiNGAM for config: n30_s500_k10 ---
+2025-06-15 11:30:17,259 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSICDirectLiNGAM.
+2025-06-15 11:30:17,325 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: RESIT for config: n30_s500_k10 ---
+2025-06-15 11:35:42,141 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for RESIT.
+2025-06-15 11:35:42,188 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_LiNGAM_Beam for config: n30_s500_k10 ---
+2025-06-15 11:41:36,034 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_LiNGAM_Beam.
+2025-06-15 11:41:36,081 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: HSIC_RESIT_Beam for config: n30_s500_k10 ---
+2025-06-15 11:50:28,812 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for HSIC_RESIT_Beam.
+2025-06-15 11:50:28,854 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:156] - INFO: --- Running model: BidirectionalBeamSearch for config: n30_s500_k10 ---
+2025-06-15 12:01:24,089 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:168] - INFO: Completed 30/30 trials for BidirectionalBeamSearch.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+Warning: Bidirectional search did not meet. Falling back to the best forward path.
+2025-06-15 12:01:24,136 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:174] - INFO: Appended 180 results to master summary file.
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:176] - INFO: ----------------------------------------------------------------------
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:177] - INFO: FINISHED CONFIGURATION: n30_s500_k10
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:178] - INFO: ======================================================================
+
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:194] - INFO: ############################################################
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:195] - INFO: ###   ALL BEAM SEARCH EXPERIMENTS HAVE COMPLETED         ###
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:196] - INFO: ############################################################
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:197] - INFO: Master summary file is located at: beam_comparison_experiments/run_20250615_095916/master_summary.csv
+2025-06-15 12:01:24,137 - /home/hong/CausalPathSearch/run_beam_comparison.py[line:198] - INFO: Detailed logs are in: beam_comparison_experiments/run_20250615_095916/beam_comparison_20250615_095916.log
