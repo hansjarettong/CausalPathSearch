@@ -210,6 +210,25 @@ class LiNGAM(CausalSearch):
         hsic_statistic, p_val = hsic_test_gamma(X_temp[:, [selected_feature]], residuals)
         
         return -p_val if self.independence_measure == 'p_value' else hsic_statistic
+    
+    def get_binary_adjacency_matrix(self):
+        """
+        Converts the coefficient-based adjacency matrix to a binary one.
+        
+        This method checks for non-zero coefficients in a numerically robust way,
+        accounting for potential floating-point inaccuracies. An edge is considered
+        present if its absolute coefficient is greater than a small tolerance.
+
+        Returns
+        -------
+        binary_matrix : np.ndarray
+            The binary adjacency matrix (0s and 1s).
+        """
+        if self.adjacency_matrix_ is None:
+            raise RuntimeError("The model has not been fitted yet. Call fit() first.")
+        
+        # Robustly check for non-zero values against a small tolerance (epsilon)
+        return (np.abs(self.adjacency_matrix_) > 1e-10).astype(int)
 
 
 class RESIT(CausalSearch):
